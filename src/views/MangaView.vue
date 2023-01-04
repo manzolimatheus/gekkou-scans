@@ -32,7 +32,7 @@
             <div class="createdYear">
               <ion-icon name="calendar-number-outline"></ion-icon>
               <h3>Lançamento</h3>
-              <p>{{ manga.attributes.createdYear }}</p>
+              <p>{{ manga.attributes.createdDate }}</p>
             </div>
             <div class="views">
               <ion-icon name="eye-outline"></ion-icon>

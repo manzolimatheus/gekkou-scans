@@ -1,5 +1,5 @@
 <template>
-  <ContentSlider :title="title" v-if="mangas.length > 0">
+  <ContentSlider :title="title" v-if="mangas.length > 0" id="slider">
     <router-link
       :to="`/manga/${manga.id}`"
       v-for="manga in mangas"
@@ -39,17 +39,18 @@ export default {
   data() {
     return {
       mangas: [],
+      limit: 10,
     };
   },
   methods: {
     async getMangas() {
-      const URL = `${BASE_URL}/api/mangas?filters[category][id][$eq]=${this.categoryId}&populate=*`;
+      const URL = `${BASE_URL}/api/mangas?filters[category][id][$eq]=${this.categoryId}&pagination[limit]=${this.limit}&populate=*`;
 
       const response = await axios.get(URL);
 
-      this.mangas = response.data.data;
+      this.totalRecords = response.data.meta.pagination.total;
 
-      console.log(this.mangas)
+      this.mangas = response.data.data;
     },
   },
   computed: {
