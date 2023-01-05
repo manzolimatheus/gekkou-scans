@@ -55,6 +55,7 @@ export default {
       this.totalRecords = response.data.meta.pagination.total;
 
       this.mangas = response.data.data;
+      console.log(this.mangas)
 
     },
     async getMore() {
@@ -80,7 +81,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 
 .manga-grid {
   display: flex;
@@ -92,6 +93,17 @@ export default {
   background: var(--app-color);
   padding: 10px 20px;
   border-radius: 10px;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .manga-grid {
+    align-items: start;
+  }
+
+  .card {
+    width: 100% !important;
+  }
 }
 
 </style>

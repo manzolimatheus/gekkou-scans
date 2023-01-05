@@ -45,6 +45,9 @@
               <p>{{ manga.attributes.stars }}/5</p>
             </div>
           </section>
+            <section class="manga-chapters">
+              <MangaChaptersList :mangaId="id"/>
+            </section>
         </section>
       </div>
     </section>
@@ -54,9 +57,13 @@
 <script>
 import { BASE_URL } from "@/assets/js/constants";
 import axios from "axios";
+import MangaChaptersList from "@/components/MangaChaptersList"
 
 export default {
   name: "MangaView",
+  components: {
+    MangaChaptersList
+  },
   data() {
     return {
       manga: null,

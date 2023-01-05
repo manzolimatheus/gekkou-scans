@@ -2,7 +2,7 @@
   <div class="error">
     <h1>Oops!</h1>
     <img
-      src="https://chpic.su/_data/stickers/c/ChainsawManPack/ChainsawManPack_009.webp"
+      src="/img/assets/makima.webp"
       alt="Makima Pensando"
     />
     <p>Parece que o que você está buscando foi movido ou não existe!</p>
