@@ -1,5 +1,32 @@
 <template>
   <div class="manga-view">
+    <section class="loading" v-if="!isLoaded">
+      <SkeletonLoading width="100%" height="300px"  borderRadius="0" />
+      <div class="data">
+        <section class="cover">
+          <SkeletonLoading width="100%" height="300px"/>
+        </section>
+        <section class="info">
+          <SkeletonLoading width="100%" height="50px" />
+          <br />
+          <SkeletonLoading width="100%" height="100px" />
+          <section class="info-details">
+            <div>
+              <SkeletonLoading width="100%" height="50px" />
+            </div>
+            <div class="createdYear">
+              <SkeletonLoading width="100%" height="50px" />
+            </div>
+            <div class="views">
+              <SkeletonLoading width="100%" height="50px" />
+            </div>
+            <div class="stars">
+              <SkeletonLoading width="100%" height="50px" />
+            </div>
+          </section>
+        </section>
+      </div>
+    </section>
     <section class="loaded-data" v-if="isLoaded">
       <div class="banner">
         <img
@@ -45,9 +72,9 @@
               <p>{{ manga.attributes.stars }}/5</p>
             </div>
           </section>
-            <section class="manga-chapters">
-              <MangaChaptersList :mangaId="id"/>
-            </section>
+          <section class="manga-chapters">
+            <MangaChaptersList :mangaId="id" />
+          </section>
         </section>
       </div>
     </section>
@@ -57,12 +84,14 @@
 <script>
 import { BASE_URL } from "@/assets/js/constants";
 import axios from "axios";
-import MangaChaptersList from "@/components/MangaChaptersList"
+import MangaChaptersList from "@/components/MangaChaptersList";
+import SkeletonLoading from "@/components/SkeletonLoading";
 
 export default {
   name: "MangaView",
   components: {
-    MangaChaptersList
+    MangaChaptersList,
+    SkeletonLoading,
   },
   data() {
     return {
@@ -117,7 +146,9 @@ export default {
     },
   },
   mounted() {
-    this.getManga();
+    setTimeout(() => {
+      this.getManga();
+    }, 1000);
   },
 };
 </script>

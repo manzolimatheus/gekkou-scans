@@ -4,12 +4,14 @@
     --app-color: #38a8e8;
     --primary-color: #d4d4d4;
     --secondary-color: white;
+    --third-color: #f2f2f2;
     --text-color: #1a1a1a;
 }
 
 .dark-mode {
     --primary-color: #1a1a1a;
     --secondary-color: #0c0c0c;
+    --third-color: #2d2d2d;
     --text-color: white;
 }
 

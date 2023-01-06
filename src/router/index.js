@@ -33,6 +33,11 @@ const routes = [
     name: 'read',
     props: true,
     component: () => import('../views/ReadView.vue')
+  },
+  {
+    path: '/categories',
+    name: 'categories',
+    component: () => import('../views/CategoriesView.vue')
   }
 ]
 

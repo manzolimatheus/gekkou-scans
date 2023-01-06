@@ -29,8 +29,8 @@ export default {
 
 <style scoped>
 .card {
-  height: 300px;
-  width: 14rem;
+  height: 200px;
+  width: 130px !important;
   cursor: pointer;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
@@ -44,12 +44,5 @@ export default {
 
 .card:hover {
   filter: brightness(0.8);
-}
-
-@media (max-width: 768px) {
-  .card {
-    height: 200px;
-    width: 130px !important;
-  }
 }
 </style>

@@ -1,17 +1,22 @@
 <template>
-  <ContentSlider :title="title" v-if="mangas.length > 0" id="slider">
-    <router-link
-      :to="`/manga/${manga.id}`"
-      v-for="manga in mangas"
-      :key="manga.id"
-    >
-      <CardTile
-        class="manga"
-        :image="BASE_URL + manga.attributes.imageCover.data.attributes.url"
-        :title="manga.attributes.name"
-      />
-    </router-link>
-  </ContentSlider>
+  <div>
+    <ContentSlider title="Carregando..." v-if="!isLoaded">
+      <SkeletonLoading height="200px" width="130px" v-for="i in 8" :key="i" />
+    </ContentSlider>
+    <ContentSlider :title="title" v-if="mangas.length > 0 && isLoaded" :titleLink="`/category/${categoryId}`">
+      <router-link
+        :to="`/manga/${manga.id}`"
+        v-for="manga in mangas"
+        :key="manga.id"
+      >
+        <CardTile
+          class="manga"
+          :image="BASE_URL + manga.attributes.imageCover.data.attributes.url"
+          :title="manga.attributes.name"
+        />
+      </router-link>
+    </ContentSlider>
+  </div>
 </template>
 
 <script>
@@ -19,12 +24,14 @@ import ContentSlider from "@/components/ContentSlider";
 import CardTile from "@/components/CardTile";
 import { BASE_URL } from "@/assets/js/constants";
 import axios from "axios";
+import SkeletonLoading from "@/components/SkeletonLoading";
 
 export default {
   name: "MangaSlider",
   components: {
     ContentSlider,
     CardTile,
+    SkeletonLoading,
   },
   props: {
     categoryId: {
@@ -51,6 +58,7 @@ export default {
       this.totalRecords = response.data.meta.pagination.total;
 
       this.mangas = response.data.data;
+      this.isLoaded = true;
     },
   },
   computed: {
@@ -59,7 +67,9 @@ export default {
     },
   },
   created() {
-    this.getMangas();
+    setTimeout(() => {
+      this.getMangas();
+    }, 1000);
   },
 };
 </script>

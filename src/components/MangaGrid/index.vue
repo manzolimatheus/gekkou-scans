@@ -1,18 +1,28 @@
 <template>
   <div class="manga-grid">
-    <ContentGrid :title="titleCount" :titleLink="`/category/${categoryId}`">
+    <ContentGrid title="Carregando..." v-if="!isLoaded">
+      <SkeletonLoading height="200px" width="130px" v-for="i in 10" :key="i" />
+    </ContentGrid>
+    <ContentGrid
+      :title="titleCount"
+      :titleLink="`/category/${categoryId}`"
+      v-if="isLoaded"
+    >
       <router-link
         :to="`/manga/${manga.id}`"
         v-for="manga in mangas"
         :key="manga.id"
       >
         <CardTile
+          class="card"
           :image="BASE_URL + manga.attributes.imageCover.data.attributes.url"
           :title="manga.attributes.name"
         />
       </router-link>
     </ContentGrid>
-    <button @click="getMore" v-show="mangas.length < totalRecords">Mostrar mais</button>
+    <button @click="getMore" v-show="mangas.length < totalRecords">
+      Mostrar mais
+    </button>
   </div>
 </template>
 
@@ -21,12 +31,14 @@ import ContentGrid from "@/components/ContentGrid";
 import CardTile from "@/components/CardTile";
 import { BASE_URL } from "@/assets/js/constants";
 import axios from "axios";
+import SkeletonLoading from "@/components/SkeletonLoading";
 
 export default {
   name: "MangaGrid",
   components: {
     ContentGrid,
     CardTile,
+    SkeletonLoading,
   },
   props: {
     categoryId: {
@@ -44,6 +56,7 @@ export default {
       offset: 0,
       limit: 10,
       totalRecords: 0,
+      isLoaded: false,
     };
   },
   methods: {
@@ -55,8 +68,7 @@ export default {
       this.totalRecords = response.data.meta.pagination.total;
 
       this.mangas = response.data.data;
-      console.log(this.mangas)
-
+      this.isLoaded = true;
     },
     async getMore() {
       this.offset += this.limit;
@@ -76,13 +88,14 @@ export default {
     },
   },
   created() {
-    this.getMangas();
+    setTimeout(() => {
+      this.getMangas();
+    }, 1000);
   },
 };
 </script>
 
 <style>
-
 .manga-grid {
   display: flex;
   flex-direction: column;
@@ -95,15 +108,4 @@ export default {
   border-radius: 10px;
   border: none;
 }
-
-@media (max-width: 768px) {
-  .manga-grid {
-    align-items: start;
-  }
-
-  .card {
-    width: 100% !important;
-  }
-}
-
 </style>

@@ -30,23 +30,21 @@ export default {
 
 
 <style scoped>
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
 .grid-container h1 {
   text-align: center;
   margin: 2rem 0;
 }
 
 .grid-content {
-  display: grid;
-  justify-content: center;
+  display: flex;
   gap: 1rem;
-  padding: 0 2rem;
-  grid-template-columns: repeat(5, 1fr);
-}
-
-@media (max-width: 768px) {
-  .grid-content {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
-  }
+  flex-wrap: wrap;
+  justify-content: center;
 }
 </style>

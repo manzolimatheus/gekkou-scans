@@ -15,6 +15,12 @@
         <li>
           <router-link to="/about">Avisos</router-link>
         </li>
+        <li>
+          <router-link to="/mangas">Mangás</router-link>
+        </li>
+        <li>
+          <router-link to="/categories">Categorias</router-link>
+        </li>
         <li @click="$store.commit('toggleDarkMode')">
           <span>{{ $store.state.activeDarkMode ? "🌙" : "🌞" }}</span>
         </li>

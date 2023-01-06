@@ -78,11 +78,10 @@ export default {
 
 .slider-content {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   overflow-x: auto;
   gap: 1rem;
   scroll-behavior: smooth;
+  overflow-y: hidden;
 }
 
 .slider-content::-webkit-scrollbar {
