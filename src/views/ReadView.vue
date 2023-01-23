@@ -36,7 +36,6 @@ export default {
   methods: {
     async getPages() {
       const URL = `${BASE_URL}/api/manga-caps?filters[id][$eq]=${this.chapterId}&populate=*`
-      console.log(URL)
 
       const {data} = await axios.get(URL)
 

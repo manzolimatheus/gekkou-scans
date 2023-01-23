@@ -1,49 +1,54 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
-    component: () => import('../views/ErrorView.vue')
+    component: () => import('../views/ErrorView.vue'),
   },
   {
     path: '/',
     name: 'home',
-    component: () => import('../views/HomeView.vue')
+    component: () => import('../views/HomeView.vue'),
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import('../views/AboutView.vue')
+    component: () => import('../views/AboutView.vue'),
   },
   {
     path: '/manga/:id',
     name: 'manga',
     props: true,
-    component: () => import('../views/MangaView.vue')
+    component: () => import('../views/MangaView.vue'),
   },
   {
     path: '/category/:id',
     name: 'category',
     props: true,
-    component: () => import('../views/CategoryView.vue')
+    component: () => import('../views/CategoryView.vue'),
   },
   {
     path: '/read/:chapterId',
     name: 'read',
     props: true,
-    component: () => import('../views/ReadView.vue')
+    component: () => import('../views/ReadView.vue'),
   },
   {
     path: '/categories',
     name: 'categories',
-    component: () => import('../views/CategoriesView.vue')
-  }
-]
+    component: () => import('../views/CategoriesView.vue'),
+  },
+  {
+    path: '/mangas',
+    name: 'mangas',
+    component: () => import('../views/MangasView.vue'),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

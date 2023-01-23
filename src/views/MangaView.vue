@@ -126,13 +126,11 @@ export default {
       const category = await axios.get(URL);
 
       this.category = category.data.data[0];
-      console.log(this.category);
     },
     async incrementViews() {
       this.manga.attributes.views++;
 
       const URL = `${BASE_URL}/api/mangas/${this.id}`;
-      console.log(this.manga);
       this.manga = await axios.put(URL, {
         data: {
           views: this.manga.attributes.views,
@@ -146,9 +144,7 @@ export default {
     },
   },
   mounted() {
-    setTimeout(() => {
       this.getManga();
-    }, 1000);
   },
 };
 </script>
@@ -236,6 +232,10 @@ export default {
 
   .info-details {
     overflow-x: scroll;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 }
 </style>

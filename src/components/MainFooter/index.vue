@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>GekkouScans &copy; {{ currentYear }}</p>
+    <p>Matheus Manzoli &copy; {{ currentYear }}</p>
   </footer>
 </template>
 
@@ -20,7 +20,7 @@ export default {
 footer {
     background: var(--primary-color);
     text-align: center;
-    margin-top: 4rem;
+    margin-top: 2rem;
     padding: 2%;
 }
 

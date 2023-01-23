@@ -9,6 +9,12 @@
       :title="category.attributes.name"
       :titleLink="`/category/${category.id}`"
     />
+    <section class="more-content-soon">
+      <h1>Você chegou ao fim!</h1>
+      <img src="http://i.imgur.com/MuUwwmT.png" alt="Princesa Mononoke">
+      <h2>Por enquanto, é só isso que temos para mostrar.</h2>
+      <h2>Mais conteúdo vindo em breve!! Fique atento! ✨</h2>
+    </section>
   </div>
 </template>
 
@@ -54,3 +60,27 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+.more-content-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  padding: 2rem;
+}
+
+.more-content-soon h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.more-content-soon h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+</style>

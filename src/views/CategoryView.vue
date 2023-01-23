@@ -33,7 +33,6 @@ export default {
       const category = await axios.get(URL);
 
       this.category = category.data.data[0];
-      console.log(this.category);
     },
   },
   computed: {

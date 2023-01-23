@@ -1,21 +1,31 @@
 <template>
-  <div class="chapters-list" v-if="chapters.length">
-    <header>
-      <h3>Capítulos ({{ totalRecords }})</h3>
-      <button @click="getMore" v-show="chapters.length < totalRecords">
-        Mostrar mais
-      </button>
-    </header>
-    <main>
-      <ul>
-        <li v-for="(chapter, index) in chapters" :key="chapter.id">
-          <router-link :to="`/read/${chapter.id}`">
-            <span>#{{ totalRecords - index }} - {{ chapter.attributes.title }}</span>
-            <span class="date">{{ getLocaleDate(chapter.attributes.createdAt) }}</span>
-          </router-link>
-        </li>
-      </ul>
-    </main>
+  <div>
+    <section class="chapters-list" v-if="chapters.length">
+      <header>
+        <h3>Capítulos ({{ totalRecords }})</h3>
+        <button @click="getMore" v-show="chapters.length < totalRecords">
+          Mostrar mais
+        </button>
+      </header>
+      <main>
+        <ul>
+          <li v-for="(chapter, index) in chapters" :key="chapter.id">
+            <router-link :to="`/read/${chapter.id}`">
+              <span
+                >#{{ totalRecords - index }} -
+                {{ chapter.attributes.title }}</span
+              >
+              <span class="date">{{
+                getLocaleDate(chapter.attributes.createdAt)
+              }}</span>
+            </router-link>
+          </li>
+        </ul>
+      </main>
+    </section>
+    <section v-else>
+      <h3 class="mt-2">Nenhum capítulo está disponibilizado para este mangá.</h3>
+    </section>
   </div>
 </template>
 

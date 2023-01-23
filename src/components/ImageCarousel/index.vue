@@ -19,7 +19,7 @@
         ></li>
       </ul>
     </div>
-    <button @click="prev">
+    <button @click="next">
       <ion-icon name="arrow-forward-outline"></ion-icon>
     </button>
   </div>
@@ -84,7 +84,6 @@ export default {
   },
   mounted() {
     this.runCarousel();
-    console.log(this.content)
   },
 };
 </script>

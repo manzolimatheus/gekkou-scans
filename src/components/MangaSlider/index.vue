@@ -67,9 +67,7 @@ export default {
     },
   },
   created() {
-    setTimeout(() => {
       this.getMangas();
-    }, 1000);
   },
 };
 </script>

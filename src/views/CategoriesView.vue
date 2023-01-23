@@ -82,9 +82,7 @@ export default {
     },
   },
   created() {
-    setTimeout(() => {
       this.getCategories();
-    }, 1000);
   },
 };
 </script>
