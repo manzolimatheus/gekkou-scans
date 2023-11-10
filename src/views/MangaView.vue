@@ -27,7 +27,7 @@
         </section>
       </div>
     </section>
-    <section class="loaded-data" v-if="isLoaded">
+    <section class="loaded-data" v-if="isLoaded && manga && category">
       <div class="banner">
         <img
           :src="BASE_URL + manga?.attributes?.imageBanner?.data?.attributes?.url"
@@ -143,7 +143,7 @@ export default {
       return BASE_URL;
     },
   },
-  mounted() {
+  created() {
       this.getManga();
   },
 };
