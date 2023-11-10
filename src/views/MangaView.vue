@@ -30,46 +30,46 @@
     <section class="loaded-data" v-if="isLoaded">
       <div class="banner">
         <img
-          :src="BASE_URL + manga.attributes.imageBanner.data.attributes.url"
+          :src="BASE_URL + manga?.attributes?.imageBanner?.data?.attributes?.url"
           alt="banner"
         />
       </div>
       <div class="data">
         <section class="cover">
           <img
-            v-if="manga.attributes.imageCover.data.attributes.url"
-            :src="BASE_URL + manga.attributes.imageCover.data.attributes.url"
+            v-if="manga?.attributes?.imageCover?.data?.attributes?.url"
+            :src="BASE_URL + manga?.attributes?.imageCover?.data?.attributes?.url"
             alt="cover"
           />
         </section>
         <section class="info">
           <h1>
-            <span>{{ manga.attributes.name }}</span>
+            <span>{{ manga?.attributes?.name }}</span>
           </h1>
           <br />
-          <p>{{ manga.attributes.description }}</p>
+          <p>{{ manga?.attributes?.description }}</p>
           <section class="info-details">
             <div>
-              <router-link :to="`/category/${category.id}`" class="category">
+              <router-link :to="`/category/${category?.id}`" class="category">
                 <ion-icon name="bookmarks-outline"></ion-icon>
                 <h3>Categoria</h3>
-                <p>{{ category.attributes.name }}</p>
+                <p>{{ category?.attributes?.name }}</p>
               </router-link>
             </div>
             <div class="createdYear">
               <ion-icon name="calendar-number-outline"></ion-icon>
               <h3>Lançamento</h3>
-              <p>{{ manga.attributes.createdDate }}</p>
+              <p>{{ manga?.attributes?.createdDate }}</p>
             </div>
             <div class="views">
               <ion-icon name="eye-outline"></ion-icon>
               <h3>Visualizações</h3>
-              <p>{{ manga.attributes.views.toLocaleString() }}</p>
+              <p>{{ manga?.attributes?.views?.toLocaleString() }}</p>
             </div>
             <div class="stars">
               <ion-icon name="star-outline"></ion-icon>
               <h3>Avaliações</h3>
-              <p>{{ manga.attributes.stars }}/5</p>
+              <p>{{ manga?.attributes?.stars }}/5</p>
             </div>
           </section>
           <section class="manga-chapters">
