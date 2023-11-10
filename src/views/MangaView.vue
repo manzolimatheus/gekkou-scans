@@ -1,6 +1,6 @@
 <template>
   <div class="manga-view">
-    <section class="loading" v-if="!isLoaded">
+    <!-- <section class="loading" v-if="!isLoaded">
       <SkeletonLoading width="100%" height="300px"  borderRadius="0" />
       <div class="data">
         <section class="cover">
@@ -77,22 +77,23 @@
           </section>
         </section>
       </div>
-    </section>
+    </section> -->
+    <pre>{{ manga }}</pre>
   </div>
 </template>
 
 <script>
 import { BASE_URL } from "@/assets/js/constants";
 import axios from "axios";
-import MangaChaptersList from "@/components/MangaChaptersList";
-import SkeletonLoading from "@/components/SkeletonLoading";
+// import MangaChaptersList from "@/components/MangaChaptersList";
+// import SkeletonLoading from "@/components/SkeletonLoading";
 
 export default {
   name: "MangaView",
-  components: {
-    MangaChaptersList,
-    SkeletonLoading,
-  },
+  // components: {
+  //   MangaChaptersList,
+  //   SkeletonLoading,
+  // },
   data() {
     return {
       manga: null,
