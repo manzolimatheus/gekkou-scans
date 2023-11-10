@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>Matheus Manzoli &copy; {{ currentYear }}</p>
+    <p>Matheus Manzoli & Raíne Felix &copy; {{ currentYear }}</p>
   </footer>
 </template>
 

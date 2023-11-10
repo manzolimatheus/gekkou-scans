@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <DiscordModalVue />
     <ImageCarousel :content="carouselData" />
     <MangaSlider
       v-for="category in categories"
@@ -20,7 +19,6 @@
 
 <script>
 import ImageCarousel from "@/components/ImageCarousel";
-import DiscordModalVue from "@/components/ModalOverlay/DiscordModal.vue";
 import MangaSlider from "@/components/MangaSlider";
 import { BASE_URL } from "@/assets/js/constants";
 import axios from "axios";
@@ -34,7 +32,6 @@ export default {
     };
   },
   components: {
-    DiscordModalVue,
     ImageCarousel,
     MangaSlider,
   },
