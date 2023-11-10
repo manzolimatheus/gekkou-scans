@@ -73,7 +73,7 @@ export default {
     },
     customBackground() {
       return {
-        background: this.content[this.index].attributes.color,
+        background: this.content[this.index].attributes.color ?? 'black',
       };
     },
     currentImage() {

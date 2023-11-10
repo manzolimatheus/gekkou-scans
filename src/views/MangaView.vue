@@ -37,8 +37,8 @@
       <div class="data">
         <section class="cover">
           <img
-            v-if="manga?.attributes?.imageCover?.data?.attributes?.url"
-            :src="BASE_URL + manga?.attributes?.imageCover?.data?.attributes?.url"
+            v-if="manga.attributes.imageCover.data.attributes.url"
+            :src="BASE_URL + manga.attributes.imageCover.data.attributes.url"
             alt="cover"
           />
         </section>
@@ -108,7 +108,8 @@ export default {
   },
   methods: {
     async getManga() {
-      const URL = `${BASE_URL}/api/mangas?filters[id][$eq]=${this.id}&populate=*`;
+      const URL = `${BASE_URL}/api/mangas/${this.id}?populate=*`;
+      console.log({URL})
 
       const manga = await axios.get(URL);
       if (manga.data.data.length < 1) {
@@ -116,7 +117,7 @@ export default {
         return;
       }
 
-      this.manga = manga.data.data[0];
+      this.manga = manga.data.data
       this.getCategory(this.manga.attributes.category.data.id);
       this.incrementViews();
       this.isLoaded = true;
@@ -143,7 +144,7 @@ export default {
       return BASE_URL;
     },
   },
-  created() {
+  mounted() {
       this.getManga();
   },
 };
