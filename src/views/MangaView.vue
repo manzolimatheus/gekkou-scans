@@ -27,7 +27,7 @@
         </section>
       </div>
     </section>
-    <section class="loaded-data" v-if="isLoaded && manga && category">
+    <section class="loaded-data" v-if="isLoaded">
       <div class="banner">
         <img
           :src="BASE_URL + manga?.attributes?.imageBanner?.data?.attributes?.url"
@@ -109,14 +109,14 @@ export default {
   methods: {
     async getManga() {
       const URL = `${BASE_URL}/api/mangas/${this.id}?populate=*`;
-      console.log({URL})
 
       const manga = await axios.get(URL);
-      if (manga.data.data.length < 1) {
+      console.log({manga: manga.data})
+      if (!manga.data.data.id) {
         this.$router.push({ name: "not-found" });
         return;
       }
-
+      
       this.manga = manga.data.data
       this.getCategory(this.manga.attributes.category.data.id);
       this.incrementViews();
@@ -144,8 +144,8 @@ export default {
       return BASE_URL;
     },
   },
-  mounted() {
-      this.getManga();
+  async mounted() {
+      await this.getManga();
   },
 };
 </script>
