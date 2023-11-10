@@ -78,7 +78,6 @@
         </section>
       </div>
     </section>
-    <pre>{{ manga }}</pre>
   </div>
 </template>
 
