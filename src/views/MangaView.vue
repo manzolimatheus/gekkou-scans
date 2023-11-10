@@ -1,6 +1,6 @@
 <template>
   <div class="manga-view">
-    <!-- <section class="loading" v-if="!isLoaded">
+    <section class="loading" v-if="!isLoaded">
       <SkeletonLoading width="100%" height="300px"  borderRadius="0" />
       <div class="data">
         <section class="cover">
@@ -61,11 +61,6 @@
               <h3>Lançamento</h3>
               <p>{{ manga?.attributes?.createdDate }}</p>
             </div>
-            <div class="views">
-              <ion-icon name="eye-outline"></ion-icon>
-              <h3>Visualizações</h3>
-              <p>{{ manga?.attributes?.views?.toLocaleString() }}</p>
-            </div>
             <div class="stars">
               <ion-icon name="star-outline"></ion-icon>
               <h3>Avaliações</h3>
@@ -77,23 +72,22 @@
           </section>
         </section>
       </div>
-    </section> -->
-    <pre>{{ manga }}</pre>
+    </section>
   </div>
 </template>
 
 <script>
 import { BASE_URL } from "@/assets/js/constants";
 import axios from "axios";
-// import MangaChaptersList from "@/components/MangaChaptersList";
-// import SkeletonLoading from "@/components/SkeletonLoading";
+import MangaChaptersList from "@/components/MangaChaptersList";
+import SkeletonLoading from "@/components/SkeletonLoading";
 
 export default {
   name: "MangaView",
-  // components: {
-  //   MangaChaptersList,
-  //   SkeletonLoading,
-  // },
+  components: {
+    MangaChaptersList,
+    SkeletonLoading,
+  },
   data() {
     return {
       manga: null,
@@ -120,7 +114,7 @@ export default {
       
       this.manga = manga.data.data
       this.getCategory(this.manga.attributes.category.data.id);
-      this.incrementViews();
+      // this.incrementViews();
       this.isLoaded = true;
     },
     async getCategory(categoryId) {
